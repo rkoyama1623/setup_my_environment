@@ -2,9 +2,11 @@
 DISTRO=kinetic
 
 # get password
-echo -n Password: 
-read -s password
-echo 
+if ! [ -v password ]; then
+	echo -n Password: 
+	read -s password
+	echo; 
+fi
 
 # ros
 echo ${password}|sudo -kS sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'

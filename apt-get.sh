@@ -8,9 +8,11 @@ APT_GET_YES="-y -qq -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--forc
 YES="-y"
 
 # get password
-echo -n Password: 
-read -s password
-echo 
+if ! [ -v password ]; then
+	echo -n Password: 
+	read -s password
+	echo; 
+fi
 
 echo ${password}|sudo -kS add-apt-repository ppa:octave/stable
 echo ${password}|sudo -kS apt-get update
