@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-DISTRO=kinetic
+DISTRO=melodic
 
 # get password
 if ! [ -v password ]; then
