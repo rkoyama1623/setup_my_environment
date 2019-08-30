@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-DISTRO=kinetic
+DISTRO=melodic
 
 # get password
 if ! [ -v password ]; then
@@ -18,6 +18,6 @@ echo ${password}|sudo -kS apt-get install ros-${DISTRO}-desktop -y
 # run rosbuild
 # bash jsk.rosbuild --from-source --rtm indigo -y
 echo ${password}|sudo -kS apt-get install ros-${DISTRO}-rosbash python-rosdep python-wstool -y
-
+echo ${password}|sudo -kS apt-get install python-catkin-tools
 # ntp settings
 ## ./scripts/ntp_setting.sh
