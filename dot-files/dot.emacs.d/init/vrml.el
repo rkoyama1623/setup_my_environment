@@ -1,0 +1,16 @@
+;; (when (file-exists-p "vrml-mode.el")
+;; (require 'vrml-mode)
+;; (autoload 'vrml-mode "vrml" "VRML mode." t)
+;; (add-to-list 'auto-mode-alist
+;; 	     (cons (concat "\\." (regexp-opt'("wrl") t) "\\'")
+;; 		   'vrml-mode)
+;; 	     )
+
+(add-to-list 'load-path (locate-user-emacs-file "3rd-party"))
+;; (when (file-exists-p (format "%s/.emacs.d/vrml-mode.el" (getenv "HOME")))
+(when (file-exists-p (locate-user-emacs-file "3rd-party/vrml-mode.el"))
+  ;; (load "vrml-mode.el")
+  (load (locate-user-emacs-file "3rd-party/vrml-mode.el"))
+  (autoload 'vrml-mode "vrml" "VRML mode." t)
+  (setq auto-mode-alist (append '(("\\.wrl\\'" . vrml-mode)) auto-mode-alist))
+  )

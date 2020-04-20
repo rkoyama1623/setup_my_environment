@@ -1,0 +1,3 @@
+(when (executable-find "platex")
+
+  )

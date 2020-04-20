@@ -1,0 +1,5 @@
+(:name word-count
+       :type github
+       :pkgname "tomaszskutnik/word-count-mode"
+       :prepare
+       (autoload 'word-count-mode "word-count" nil t))
