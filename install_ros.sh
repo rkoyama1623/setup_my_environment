@@ -44,7 +44,7 @@ function setup_ros_env(){
 
 function main() {
     install_ros
-	set_environment_parameter
+    set_environment_parameter
     install_additional_ros_tools
     setup_ros_env
 }
