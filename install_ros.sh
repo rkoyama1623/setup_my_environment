@@ -37,10 +37,16 @@ function install_additional_ros_tools() {
     sudo ${APT} install ${tools[@]} ${YES}
 }
 
+function setup_ros_env(){
+    sudo rosdep init
+    rosdep update
+}
+
 function main() {
     install_ros
 	set_environment_parameter
     install_additional_ros_tools
+    setup_ros_env
 }
 
 # main
