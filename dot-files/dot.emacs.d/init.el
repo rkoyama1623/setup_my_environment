@@ -19,6 +19,7 @@
 (el-get-bundle emacs-evil/evil)
 (el-get-bundle code-iai/ros_emacs_utils)
 (el-get-bundle elpa:markdown-mode)
+(el-get-bundle yaml-mode)
 
 ;; load files by init-loader
 (require 'init-loader)
