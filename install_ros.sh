@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# TODO: password is required. where??
 # get ros version
 # TODO: get ros version from linux kernel version
 ROS_DISTRO=kinetic
