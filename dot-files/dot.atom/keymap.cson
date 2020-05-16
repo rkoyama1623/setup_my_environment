@@ -1,0 +1,4 @@
+'body':
+  'ctrl-k ctrl-k': 'editor:delete-line'
+  'ctrl-h': 'core:backspace'
+  'ctrl-y': 'atomic-emacs:yank'

@@ -1,0 +1,30 @@
+"*":
+  core:
+    disabledPackages: [
+      "spell-check"
+      "find-and-replace"
+    ]
+    restorePreviousWindowsOnStart: "no"
+    telemetryConsent: "no"
+    themes: [
+      "seti-ui"
+      "monokai-seti"
+    ]
+  editor:
+    tabLength: 4
+  "exception-reporting":
+    userId: "8cc97b8e-6e86-4f24-898b-e89eaed7fe74"
+  "platformio-ide-terminal":
+    style:
+      animationSpeed: 0
+      defaultPanelHeight: "50%"
+    toggles:
+      autoClose: true
+  "seti-ui":
+    compactView: true
+    disableAnimations: true
+  welcome:
+    showOnStartup: false
+".launch.source":
+  editor:
+    tabLength: 2
