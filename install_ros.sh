@@ -33,7 +33,7 @@ function set_environment_parameter() {
 }
 
 function install_additional_ros_tools() {
-    tools=(python-rosinstall python-catkin-tools)
+    tools=(python-rosdep python-rosinstall python-catkin-tools)
     sudo ${APT} install ${YES} ${tools[@]} # TODO: password required
 }
 
