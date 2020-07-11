@@ -46,3 +46,9 @@ echo ${password}|sudo -kS apt-get install gnuplot-x11 ${YES}
 
 # ccmake (gui for cmake)
 echo ${password}|sudo -kS apt-get install cmake-curses-gui ${YES}
+
+# node
+sudo apt install npm ${YES}
+sudo npm install -g n
+sudo n latest
+sudo npm update -g npm
