@@ -28,7 +28,10 @@ function install_ros() {
 
 
 function set_environment_parameter() {
-	echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+	# echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+	# rosenv
+	git clone https://github.com/rkoyama1623/rosenv.git ~/.rosenv
+	echo 'source ~/.rosenv/rosenv.sh' >> .bashrc
 	source ~/.bashrc
 }
 
