@@ -3,13 +3,14 @@
 # get ros version
 # TODO: get ros version from linux kernel version
 ROS_DISTRO=kinetic
-YES='-y'
+SUDO='sudo -E'
+YES='-y --allow-unauthenticated'
 APT='apt-get'
 
 function pre_install_ros() {
     # for wsl
     if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
-        sudo ${APT} install x11-apps ${YES}
+        ${SUDO} ${APT} install x11-apps ${YES}
     fi
 }
 
@@ -18,12 +19,12 @@ function install_ros() {
     # preparation for ros
     pre_install_ros
 	# setting source.list
-	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+	${SUDO} sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 	# setting for key
-	sudo apt-key adv --keyserver 'hkp://ha.pool.sks-keyservers.net:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+	${SUDO} apt-key adv --keyserver 'hkp://ha.pool.sks-keyservers.net:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 	# install ros
-	sudo ${APT} update
-	sudo ${APT} install ros-${ROS_DISTRO}-${ROS_APT_PACKAGE_BASE} ${YES}
+	${SUDO} ${APT} update
+	${SUDO} ${APT} install ros-${ROS_DISTRO}-${ROS_APT_PACKAGE_BASE} ${YES}
 }
 
 
@@ -37,11 +38,11 @@ function set_environment_parameter() {
 
 function install_additional_ros_tools() {
     tools=(python-rosdep python-rosinstall python-catkin-tools)
-    sudo ${APT} install ${YES} ${tools[@]} # TODO: password required
+    ${SUDO} ${APT} install ${YES} ${tools[@]} # TODO: password required
 }
 
 function setup_ros_env(){
-    sudo rosdep init
+    ${SUDO} rosdep init
     rosdep update
 }
 
@@ -54,7 +55,3 @@ function main() {
 
 # main
 main
-
-
-
-
