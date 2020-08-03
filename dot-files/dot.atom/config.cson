@@ -24,6 +24,21 @@
     disableAnimations: true
   welcome:
     showOnStartup: false
+".action.source":
+  editor:
+    tabLength: 2
 ".launch.source":
+  editor:
+    tabLength: 2
+".msg.source":
+  editor:
+    tabLength: 2
+".rosbuild.source":
+  editor:
+    tabLength: 2
+".source.srv":
+  editor:
+    tabLength: 2
+".source.yaml":
   editor:
     tabLength: 2
