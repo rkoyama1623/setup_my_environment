@@ -2,3 +2,5 @@
   'ctrl-k ctrl-k': 'editor:delete-line'
   'ctrl-h': 'core:backspace'
   'ctrl-y': 'atomic-emacs:yank'
+'atom-workspace atom-text-editor':
+  'ctrl-m': 'bracket-matcher:go-to-matching-bracket'
