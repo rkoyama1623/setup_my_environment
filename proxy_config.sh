@@ -23,6 +23,9 @@ proxy-config () {
             ;;
 
         "set")
+            # Set sudo alias
+            alias sudo='sudo -E'
+
             # Set Environment Variables
             USER='USER'
             PASS='PASS'
@@ -66,6 +69,10 @@ ftp_proxy = http://${PROXY_SERVER}:${PORT}
             ;;
 
         "unset")
+            # Set sudo alias
+            alias sudo='sudo'
+
+            # Unset Environment Variables
             export proxy_server=""
             export http_proxy=""
             export https_proxy=""
