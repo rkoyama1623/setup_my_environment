@@ -2,7 +2,6 @@
   core:
     disabledPackages: [
       "spell-check"
-      "find-and-replace"
     ]
     restorePreviousWindowsOnStart: "no"
     telemetryConsent: "no"
