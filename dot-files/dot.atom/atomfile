@@ -4,7 +4,6 @@ atomic-emacs@0.15.0
 markdown-preview-enhanced@0.16.3
 markdown-table-editor@1.1.2
 monokai-seti@0.9.0
-platformio-ide-terminal@2.10.0
 seti-ui@1.11.0
+terminus@4.0.5
 undo-tree@1.0.0
-
