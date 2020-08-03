@@ -5,50 +5,51 @@
 ################
 
 APT_GET_YES="-y -qq -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew"
+SUDO="echo ${password}|sudo -kSE"
 YES="-y"
 
 # get password
 if ! [ -v password ]; then
-	echo -n Password: 
+	echo -n Password:
 	read -s password
-	echo; 
+	echo;
 fi
 
-echo ${password}|sudo -kS add-apt-repository ppa:octave/stable
-echo ${password}|sudo -kS apt-get update
-echo ${password}|sudo -kS apt-get install aptitude ssh subversion git emacs vim-gtk tmux ${YES}
-#echo ${password}|sudo -kS apg-get upgrade firefox -y
+${SUDO} add-apt-repository ppa:octave/stable
+${SUDO} apt-get update
+${SUDO} apt-get install aptitude ssh subversion git emacs vim-gtk tmux ${YES}
+#${SUDO} apg-get upgrade firefox -y
 
 # ubuntu basic tools
-echo ${password}|sudo -kS apt-get install colordiff vlc inkscape gimp tree tig octave ${YES}
+${SUDO} apt-get install colordiff vlc inkscape gimp tree tig octave ${YES}
 
 # for .emacs
-echo ${password}|sudo -kS apt-get install xsel auto-install-el ${YES}
+${SUDO} apt-get install xsel auto-install-el ${YES}
 
 # for shell scripts
-echo ${password}|sudo -kS apt-get install nkf ${YES} #encoding
-echo ${password}|sudo -kS apt-get install pandoc ${YES} 
+${SUDO} apt-get install nkf ${YES} #encoding
+${SUDO} apt-get install pandoc ${YES}
 
 ## programing env
 # pip
-echo ${password}|sudo -kS apt-get install python-pip python3-pip ipython ipython-qtconsole python-pandas python-numpy ${YES}
-echo ${password}|sudo -kS apt-get install rhino ${YES}
+${SUDO} apt-get install python-pip python3-pip ipython ipython-qtconsole python-pandas python-numpy ${YES}
+${SUDO} apt-get install rhino ${YES}
 # boost c compile
-echo ${password}|sudo -kS apt-get install ccache ${YES}
-echo ${password}|sudo -kS ln -sf /usr/bin/ccache /usr/local/bin/gcc
-echo ${password}|sudo -kS ln -sf /usr/bin/ccache /usr/local/bin/cc
-echo ${password}|sudo -kS ln -sf /usr/bin/ccache /usr/local/bin/g++
-echo ${password}|sudo -kS ln -sf /usr/bin/ccache /usr/local/bin/c++
+${SUDO} apt-get install ccache ${YES}
+${SUDO} ln -sf /usr/bin/ccache /usr/local/bin/gcc
+${SUDO} ln -sf /usr/bin/ccache /usr/local/bin/cc
+${SUDO} ln -sf /usr/bin/ccache /usr/local/bin/g++
+${SUDO} ln -sf /usr/bin/ccache /usr/local/bin/c++
 ccache -M 10G
 
 # gnuplot
-echo ${password}|sudo -kS apt-get install gnuplot-x11 ${YES}
+${SUDO} apt-get install gnuplot-x11 ${YES}
 
 # ccmake (gui for cmake)
-echo ${password}|sudo -kS apt-get install cmake-curses-gui ${YES}
+${SUDO} apt-get install cmake-curses-gui ${YES}
 
 # node
-sudo apt install npm ${YES}
-sudo npm install -g n
-sudo n latest
-sudo npm update -g npm
+${SUDO} apt install npm ${YES}
+${SUDO} npm install -g n
+${SUDO} n latest
+${SUDO} npm update -g npm
