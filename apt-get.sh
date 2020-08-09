@@ -5,7 +5,7 @@
 ################
 
 APT_GET_YES="-y -qq -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew"
-SUDO="echo ${password}|sudo -kSE"
+SUDO="sudo -E"
 YES="-y"
 
 # get password
@@ -15,10 +15,13 @@ if ! [ -v password ]; then
 	echo;
 fi
 
-${SUDO} add-apt-repository ppa:octave/stable
+${SUDO} add-apt-repository ppa:octave/stable ${YES}
 ${SUDO} apt-get update
 ${SUDO} apt-get install aptitude ssh subversion git emacs vim-gtk tmux ${YES}
 #${SUDO} apg-get upgrade firefox -y
+
+# basic developper tools
+${SUDO} apt install build-essential ${YES}
 
 # ubuntu basic tools
 ${SUDO} apt-get install colordiff vlc inkscape gimp tree tig octave ${YES}
