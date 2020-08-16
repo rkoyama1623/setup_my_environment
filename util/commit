@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+DATE=$(worktime)
+GIT_COMMITTER_DATE="${DATE}" git commit --author="Ryo KOYAMA <ryo.koyoama.af@hitachi.com>" --date="${DATE}" -m "${@}"
+
+echo "check TimeStamp by following commands"
+echo -e "\033[0;33m git log --pretty=fuller \033[0;39m"
