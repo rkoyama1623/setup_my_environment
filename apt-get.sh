@@ -5,22 +5,19 @@
 ################
 
 APT_GET_YES="-y -qq -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew"
-SUDO="echo ${password}|sudo -kSE"
+SUDO="sudo -E"
 YES="-y"
 
-# get password
-if ! [ -v password ]; then
-	echo -n Password:
-	read -s password
-	echo;
-fi
-
-${SUDO} add-apt-repository ppa:octave/stable
+# basic tools
 ${SUDO} apt-get update
 ${SUDO} apt-get install aptitude ssh subversion git emacs vim-gtk tmux ${YES}
 #${SUDO} apg-get upgrade firefox -y
 
-# ubuntu basic tools
+# basic developper tools
+${SUDO} apt install build-essential ${YES}
+
+# basic applications
+${SUDO} add-apt-repository ppa:octave/stable ${YES}
 ${SUDO} apt-get install colordiff vlc inkscape gimp tree tig octave ${YES}
 
 # for .emacs
