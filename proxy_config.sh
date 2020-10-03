@@ -28,16 +28,17 @@ proxy-config () {
 
             # Set Environment Variables
             USER='USER'
-            PASS='PASS'
-            PROXY_SERVER='proxy.server.com'
+            PASS='PASSWORD'
+            PROXY_SERVER='example.com'
             PORT='8080'
+            DNS_SERVER_IP='0.0.0.0'
             export proxy_server=${PROXY_SERVER}
             export http_proxy="http://${USER}:${PASS}@${PROXY_SERVER}:${PORT}"
             export https_proxy="http://${USER}:${PASS}@${PROXY_SERVER}:${PORT}"
             export ftp_proxy="http://${USER}:${PASS}@${PROXY_SERVER}:${PORT}"
 
             # Prepare backup directory
-            BACKUP_DIR='${HOME}/.proxy/backup'
+            BACKUP_DIR=${HOME}/.proxy/backup
             if [ ! -e ${BACKUP_DIR} ]; then
                 mkdir -p ${BACKUP_DIR}
             fi
@@ -51,7 +52,7 @@ proxy-config () {
             git config --global http.sslVerify false
 
             # Set wget
-            cp "${HOME}/.wgetrc" "${BACKUP_DIR}/dot.wgetrc"
+            cp ${HOME}/.wgetrc ${BACKUP_DIR}/dot.wgetrc
 
             has_use_proxy=0
             grep use_proxy ${HOME}/.wgetrc > /dev/null 2>&1|| has_use_proxy_flag=$?
@@ -66,6 +67,7 @@ https_proxy = http://${PROXY_SERVER}:${PORT}
 ftp_proxy = http://${PROXY_SERVER}:${PORT}
 " > ${HOME}/.wgetrc
             fi
+            nslookup $proxy_server ${DNS_SERVER_IP}
             ;;
 
         "unset")
@@ -79,7 +81,7 @@ ftp_proxy = http://${PROXY_SERVER}:${PORT}
             export ftp_proxy=""
 
             # Prepare backup directory
-            BACKUP_DIR='${HOME}/.proxy/backup'
+            BACKUP_DIR=${HOME}/.proxy/backup
             if [ ! -e ${BACKUP_DIR} ]; then
                 mkdir -p ${BACKUP_DIR}
             fi
