@@ -52,7 +52,10 @@ if [ ${ret} -eq 0 ]; then
 # mozc
 yes_or_no_while "install mozc. Do you agree? (yes/no)";ret=$?;
 if [ ${ret} -eq 0 ]; then
-    firefox http://symfoware.blog68.fc2.com/blog-entry-1397.html
+    # firefox http://symfoware.blog68.fc2.com/blog-entry-1397.html
+    echo "Uninstall fcitx if neccessary"
+    echo "sudo apt remove fictx"
+    echo "sudo apt remove fictx-mozc"
     sudo apt-get install ibus-mozc
     killall ibus-daemon
     ibus-daemon -d -x &  #resart ibus
