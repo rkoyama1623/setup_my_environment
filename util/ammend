@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-GIT_COMMITTER_DATE=$(worktime) git commit --date=$(worktime) -m "${@}"
+GIT_COMMITTER_DATE=$(worktime) git commit --date=$(worktime) --amend
 
 echo "check TimeStamp by following commands"
 echo -e "\033[0;33m git log --pretty=fuller \033[0;39m"
