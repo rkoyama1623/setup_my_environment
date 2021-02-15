@@ -2,7 +2,7 @@
 # TODO: password is required. where??
 # get ros version
 # TODO: get ros version from linux kernel version
-ROS_DISTRO=kinetic
+ROS_DISTRO=melodic
 SUDO='sudo -E'
 YES='-y --allow-unauthenticated'
 APT='apt-get'
@@ -21,7 +21,9 @@ function install_ros() {
 	# setting source.list
 	${SUDO} sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 	# setting for key
-	${SUDO} apt-key adv --keyserver 'hkp://ha.pool.sks-keyservers.net:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 || curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -
+	# ${SUDO} apt-key adv --keyserver 'hkp://ha.pool.sks-keyservers.net:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 || curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -l
+	${SUDO} ${APT} install curl	
+	curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -
 	# install ros
 	${SUDO} ${APT} update
 	${SUDO} ${APT} install ros-${ROS_DISTRO}-${ROS_APT_PACKAGE_BASE} ${YES}
