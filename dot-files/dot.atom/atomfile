@@ -3,6 +3,7 @@ atom-ros@1.2.1
 atom-sourcetrail@0.3.0
 atomic-emacs@0.15.0
 docblock-python@0.19.0
+docblockr@0.13.7
 markdown-preview-enhanced
 markdown-table-editor@1.1.2
 monokai-seti@0.9.0

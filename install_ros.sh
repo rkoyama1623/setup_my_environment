@@ -22,7 +22,7 @@ function install_ros() {
 	${SUDO} sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 	# setting for key
 	# ${SUDO} apt-key adv --keyserver 'hkp://ha.pool.sks-keyservers.net:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 || curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -l
-	${SUDO} ${APT} install curl	
+	${SUDO} ${APT} install curl	${YES}
 	curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -
 	# install ros
 	${SUDO} ${APT} update
@@ -34,7 +34,7 @@ function set_environment_parameter() {
 	# echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 	# rosenv
 	git clone https://github.com/rkoyama1623/rosenv.git ~/.rosenv
-	echo 'source ~/.rosenv/rosenv.sh' >> .bashrc
+	echo 'source ~/.rosenv/rosenv.sh' >> ~/.bashrc
 	source ~/.bashrc
 }
 
