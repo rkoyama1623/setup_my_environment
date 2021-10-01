@@ -42,3 +42,9 @@
 ".source.yaml":
   editor:
     tabLength: 2
+".text.xml":
+  editor:
+    tabLength: 2
+".text.xml.xsl":
+  editor:
+    tabLength: 2
