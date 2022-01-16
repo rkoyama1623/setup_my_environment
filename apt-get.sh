@@ -17,8 +17,9 @@ ${SUDO} apt-get install aptitude ssh subversion git emacs vim-gtk tmux ${YES}
 ${SUDO} apt install build-essential ${YES}
 
 # basic applications
-${SUDO} add-apt-repository ppa:octave/stable ${YES}
-${SUDO} apt-get install colordiff vlc inkscape gimp tree tig octave ${YES}
+# ${SUDO} add-apt-repository ppa:octave/stable ${YES}
+# ${SUDO} apt-get install octave ${YES}
+${SUDO} apt-get install colordiff vlc inkscape gimp tree tig ${YES}
 
 # for .emacs
 ${SUDO} apt-get install xsel auto-install-el ${YES}
