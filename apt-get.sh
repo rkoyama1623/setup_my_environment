@@ -45,6 +45,9 @@ ${SUDO} apt-get install gnuplot-x11 ${YES}
 # ccmake (gui for cmake)
 ${SUDO} apt-get install cmake-curses-gui ${YES}
 
+# rclone
+curl https://rclone.org/install.sh | ${SUDO} bash
+
 # node
 ${SUDO} apt install npm ${YES}
 ${SUDO} npm install -g n
