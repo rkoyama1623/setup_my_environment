@@ -16,5 +16,10 @@ apm list -bi > atomfile
 apm install --packages-file atomfile
 ```
 
-
+## Setup Git
+```
+ssh -T git@github.com
+cd $HOME
+cp /path/to/setup_my_environment/dot-files/dot.gitconfig .gitconfig
+```
 
