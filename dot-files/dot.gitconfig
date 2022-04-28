@@ -3,6 +3,5 @@
 [user]
 	name = Example Name
 	email = example@example.com
-[url "github:"]
-	InsteadOf = https://github.com/
-	InsteadOf = git@github.com:
+[url "git@github.com:"]
+    insteadOf = https://github.com/
