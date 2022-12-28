@@ -109,7 +109,7 @@ if [ ${ret} -eq 0 ]; then
 # pyenv
 yes_or_no_while "set pyenv. Do you agree? (yes/no)";ret=$?;
 if [ ${ret} -eq 0 ]; then
-    sudo apt install libffi-dev -y
+    sudo apt install libffi-dev python3-pip liblzma-dev zlib1g-dev libsqlite3-dev python3-tk -y
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
