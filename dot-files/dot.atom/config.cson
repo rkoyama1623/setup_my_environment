@@ -10,6 +10,9 @@
       "monokai-seti"
     ]
   editor:
+    fontSize: 18
+    showIndentGuide: true
+    showInvisibles: true
     tabLength: 4
   "exception-reporting":
     userId: "8cc97b8e-6e86-4f24-898b-e89eaed7fe74"

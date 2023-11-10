@@ -54,3 +54,6 @@ ${SUDO} apt install npm ${YES}
 ${SUDO} npm install -g n
 ${SUDO} n latest
 ${SUDO} npm update -g npm
+
+## Tex
+# ${SUDO} apt-get install texlive-latex-base texlive-latex-extra # texlive-full
