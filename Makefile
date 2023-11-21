@@ -96,7 +96,7 @@ build-essential:
 
 basic-python-libraries:
 	$(SUDO) $(APT) install $(PYTHON)-pip \
-		ipython i$(PYTHON)-qtconsole $(PYTHON)-pandas $(PYTHON)-numpy $(YES)
+		i$(PYTHON) $(PYTHON)-pandas $(PYTHON)-numpy $(YES)
 
 vs-code:
 	$(SUDO) snap install --classic code
