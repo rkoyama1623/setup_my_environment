@@ -178,6 +178,14 @@ set-hardware-clock-to-use-local-time:  ## Set hardware clock to use local time
 	# timedatectl set-local-rtc 1 --adjust-system-clock # Not checked!
 	sudo hwclock -D --systohc --localtime # Checked.
 
+use-japanese:  ## Use Japanese
+	$(SUDO) $(APT) install language-pack-ja $(YES)
+	$(SUDO) update-locale LANG=ja_JP.UTF-8
+	$(SUDO) $(APT) install ibus-mozc $(YES)
+	killall ibus-daemon
+	ibus-daemon -d -x &  #resart ibus
+	firefox https://askubuntu.com/questions/561486/how-do-i-switch-input-modes-in-mozc-without-going-to-the-ibus-menu
+
 define show_variable
 	@echo "$(1): $($(1))"
 endef
