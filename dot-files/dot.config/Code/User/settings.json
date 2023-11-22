@@ -1,0 +1,19 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "emacs-mcx.useMetaPrefixCtrlLeftBracket": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "pasteImage.showFilePathConfirmInputBox": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.renderWhitespace": "all",
+    "editor.unicodeHighlight.nonBasicASCII": true,
+    "git.openRepositoryInParentFolders": "always",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "yaml": false,
+        "python": false,
+    },
+    "notebook.lineNumbers": "on",
+}
