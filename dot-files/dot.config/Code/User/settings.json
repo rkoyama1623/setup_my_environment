@@ -16,4 +16,5 @@
         "python": false,
     },
     "notebook.lineNumbers": "on",
+    "window.restoreWindows": "none",
 }
