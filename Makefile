@@ -180,8 +180,12 @@ set-hardware-clock-to-use-local-time:  ## Set hardware clock to use local time
 	sudo hwclock -D --systohc --localtime # Checked.
 
 use-japanese:  ## Use Japanese
+	# Language
 	$(SUDO) $(APT) install language-pack-ja $(YES)
 	$(SUDO) update-locale LANG=ja_JP.UTF-8
+	# Keyboad layout
+	$(SUDO) sed -ie 's/<layout>default<\/layout>/<layout>jp<\/layout>/' /usr/share/ibus/component/mozc.xml
+	# IME
 	$(SUDO) $(APT) install ibus-mozc $(YES)
 	killall ibus-daemon
 	ibus-daemon -d -x &  #resart ibus
