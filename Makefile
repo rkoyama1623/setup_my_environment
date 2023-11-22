@@ -100,6 +100,9 @@ basic-python-libraries:
 
 vs-code:
 	$(SUDO) snap install --classic code
+	for ext in $$(cat $(MAKE_SOURCE_DIR)/dot-files/dot.vscode/extension_list.txt); do \
+		code --install-extension $$ext; \
+	done
 
 node:
 	$(SUDO) $(APT) install npm $(YES)
