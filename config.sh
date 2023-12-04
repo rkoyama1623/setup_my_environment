@@ -72,6 +72,16 @@ if [ ${ret} -eq 0 ]; then
     fi
 fi
 
+yes_or_no_while "Stop bell ringing. Do you agree? (yes/no)";ret=$?;
+if [ ${ret} -eq 0 ]; then
+    echo "make .inputrc and process"
+    f=${HOME}/.inputrc
+    touch ${f}
+    if ! $(grep "set bell-style visible" ${f});then
+        echo "set bell-style visible" >> ${f}
+    fi
+fi
+
 # git cache
 yes_or_no_while "configure git to cache 24h. Do you agree? (yes/no)";ret=$?;
 if [ ${ret} -eq 0 ]; then

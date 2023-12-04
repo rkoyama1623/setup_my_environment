@@ -72,7 +72,7 @@ $(HOME)/.emacs.d:
 
 BASIC_TOOLS_DEPS:=build-essential
 BASIC_TOOLS_DEPS+=basic-python-libraries
-BASIC_TOOLS_DEPS+=vs-code
+BASIC_TOOLS_DEPS+=vscode
 # BASIC_TOOLS_DEPS+=node
 BASIC_TOOLS_DEPS+=~/.ccache
 BASIC_TOOLS_DEPS+=$(HOME)/bin/commit
@@ -98,7 +98,7 @@ basic-python-libraries:
 	$(SUDO) $(APT) install $(PYTHON)-pip \
 		i$(PYTHON) $(PYTHON)-pandas $(PYTHON)-numpy $(YES)
 
-vs-code:
+vscode:
 	$(SUDO) snap install --classic code
 	cp $(MAKE_SOURCE_DIR)/dot-files/dot.config/Code/User/settings.json $(HOME)/.config/Code/User/settings.json
 	for ext in $$(cat $(MAKE_SOURCE_DIR)/dot-files/dot.vscode/extension_list.txt); do \
