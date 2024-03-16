@@ -45,6 +45,7 @@ if [ ${ret} -eq 0 ]; then
 ## change name of dir
 yes_or_no_while "change name of dir. Do you agree? (yes/no)";ret=$?;
 if [ ${ret} -eq 0 ]; then
+    # LANG=C;xdg-user-dirs-update --force
     LANG=C;xdg-user-dirs-gtk-update
     LANG=ja_JP.UTF-8
     echo "donee";fi
