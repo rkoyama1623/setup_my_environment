@@ -16,7 +16,7 @@ YES:=-y
 APT:=apt-get
 PIP?=$(shell if $(USE_PYENV); then echo pyenv exec pip; else echo pip3; fi)
 GIT?=$(shell if $(USE_PROXY); then echo git -c http.sslVerify=false; else echo git; fi)
-PYTHON:=$(shell if cat /etc/os-release | grep VERSION_ID | grep 18.04; then echo python; else echo python3; fi)
+PYTHON:=$(shell if cat /etc/os-release | grep VERSION_ID | grep 18.04 >/dev/null; then echo python; else echo python3; fi)
 
 # PROXY
 ifneq ($(http_proxy),)
