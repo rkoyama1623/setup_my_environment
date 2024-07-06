@@ -100,6 +100,7 @@ basic-python-libraries:
 
 vscode:
 	$(SUDO) snap install --classic code
+	mkdir -p $(HOME)/.config/Code/User
 	cp $(MAKE_SOURCE_DIR)/dot-files/dot.config/Code/User/settings.json $(HOME)/.config/Code/User/settings.json
 	for ext in $$(cat $(MAKE_SOURCE_DIR)/dot-files/dot.vscode/extension_list.txt); do \
 		code --install-extension $$ext; \
