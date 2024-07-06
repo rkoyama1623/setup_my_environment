@@ -117,23 +117,6 @@ if [ ${ret} -eq 0 ]; then
     echo '"*** Server reports data not found." must be shown.'
     echo "done";fi
 
-# pyenv
-yes_or_no_while "set pyenv. Do you agree? (yes/no)";ret=$?;
-if [ ${ret} -eq 0 ]; then
-    sudo apt install libffi-dev python3-pip libbz2-dev liblzma-dev zlib1g-dev libsqlite3-dev python3-tk -y
-    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-    echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init --path)"\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    pyenv init -
-    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
-    echo "done";fi
-
-
-
 # firefox
 # manual setting
 echo "please set firefox to sync"
