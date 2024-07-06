@@ -70,26 +70,30 @@ $(HOME)/.atom:
 $(HOME)/.emacs.d:
 	ln -s $(MAKE_SOURCE_DIR)/dot-files/dot.emacs.d $@
 
-BASIC_TOOLS_DEPS:=build-essential
+BASIC_TOOLS_DEPS+=basic-apt-tools
+BASIC_TOOLS_DEPS+=build-essential
 BASIC_TOOLS_DEPS+=basic-python-libraries
 BASIC_TOOLS_DEPS+=vscode
 # BASIC_TOOLS_DEPS+=node
 BASIC_TOOLS_DEPS+=~/.ccache
 BASIC_TOOLS_DEPS+=$(HOME)/bin/commit
+
 basic-tools: $(BASIC_TOOLS_DEPS) ## Install basic tools
-	$(SUDO) $(APT) install aptitude ssh subversion git emacs vim-gtk tmux $(YES)
+
+basic-apt-tools:
+	$(SUDO) $(APT) install ssh git tig vim-gtk tmux xsel $(YES)
 	$(SUDO) $(APT) install dconf-editor $(YES)
 	$(SUDO) $(APT) install firefox $(YES)
 	$(SUDO) $(APT) install colordiff vlc inkscape gimp tree tig $(YES)
-	$(SUDO) $(APT) install xsel auto-install-el $(YES)
-	$(SUDO) $(APT) install nkf $(YES)
-	$(SUDO) $(APT) install pandoc $(YES)
-	$(SUDO) $(APT) install rhino $(YES)
-	$(SUDO) $(APT) install gnuplot-x11 $(YES)
-	$(SUDO) $(APT) install cmake-curses-gui $(YES)
 	if ! command rclone --version >/dev/null 2>&1; then \
 		curl https://rclone.org/install.sh | $(SUDO) bash; \
 	fi
+	# $(SUDO) $(APT) install cmake-curses-gui $(YES)
+	# $(SUDO) $(APT) install gnuplot-x11 $(YES)
+	# $(SUDO) $(APT) install rhino $(YES)
+	# $(SUDO) $(APT) install nkf $(YES)
+	# $(SUDO) $(APT) install pandoc $(YES)
+	# $(SUDO) $(APT) install emacs auto-install-el $(YES)
 
 build-essential:
 	$(SUDO) $(APT) install build-essential $(YES)
