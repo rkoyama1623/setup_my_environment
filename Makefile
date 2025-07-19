@@ -17,6 +17,7 @@ APT:=apt-get
 PIP?=$(shell if $(USE_PYENV); then echo pyenv exec pip; else echo pip3; fi)
 GIT?=$(shell if $(USE_PROXY); then echo git -c http.sslVerify=false; else echo git; fi)
 PYTHON:=$(shell if cat /etc/os-release | grep VERSION_ID | grep 18.04 >/dev/null; then echo python; else echo python3; fi)
+IS_WSL?=$(shell if grep -qi microsoft /proc/version; then echo true; else echo false; fi)
 
 # PROXY
 ifneq ($(http_proxy),)
@@ -103,12 +104,22 @@ basic-python-libraries:
 		i$(PYTHON) $(PYTHON)-pandas $(PYTHON)-numpy $(YES)
 
 vscode:
-	$(SUDO) snap install --classic code
-	mkdir -p $(HOME)/.config/Code/User
-	cp $(MAKE_SOURCE_DIR)/dot-files/dot.config/Code/User/settings.json $(HOME)/.config/Code/User/settings.json
-	for ext in $$(cat $(MAKE_SOURCE_DIR)/dot-files/dot.vscode/extension_list.txt); do \
-		code --install-extension $$ext; \
-	done
+	if ! $(IS_WSL); then \
+		# Install VSCode
+		$(SUDO) $(APT) install software-properties-common apt-transport-https wget $(YES); \
+		wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg; \
+		$(SUDO) install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg; \
+		rm microsoft.gpg; \
+		echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | $(SUDO) tee /etc/apt/sources.list.d/vscode.list; \
+		$(SUDO) $(APT) update; \
+		$(SUDO) $(APT) install code $(YES); \
+		# Install extensions
+		mkdir -p $(HOME)/.config/Code/User; \
+		cp $(MAKE_SOURCE_DIR)/dot-files/dot.config/Code/User/settings.json $(HOME)/.config/Code/User/settings.json; \
+		for ext in $$(cat $(MAKE_SOURCE_DIR)/dot-files/dot.vscode/extension_list.txt); do \
+			code --install-extension $$ext; \
+		done; \
+	fi
 
 node:
 	$(SUDO) $(APT) install npm $(YES)
@@ -204,3 +215,4 @@ debug:
 	$(call show_variable,USE_PROXY)
 	$(call show_variable,GIT)
 	$(call show_variable,PYTHON)
+	$(call show_variable,IS_WSL)
