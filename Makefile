@@ -105,7 +105,7 @@ basic-python-libraries:
 
 vscode:
 	if ! $(IS_WSL); then \
-		# Install VSCode
+		# Install VSCode \
 		$(SUDO) $(APT) install software-properties-common apt-transport-https wget $(YES); \
 		wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg; \
 		$(SUDO) install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg; \
@@ -113,7 +113,7 @@ vscode:
 		echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | $(SUDO) tee /etc/apt/sources.list.d/vscode.list; \
 		$(SUDO) $(APT) update; \
 		$(SUDO) $(APT) install code $(YES); \
-		# Install extensions
+		# Install extensions \
 		mkdir -p $(HOME)/.config/Code/User; \
 		cp $(MAKE_SOURCE_DIR)/dot-files/dot.config/Code/User/settings.json $(HOME)/.config/Code/User/settings.json; \
 		for ext in $$(cat $(MAKE_SOURCE_DIR)/dot-files/dot.vscode/extension_list.txt); do \
