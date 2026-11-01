@@ -58,6 +58,12 @@ ALL_DEPS+=pyenv
 endif
 all: $(ALL_DEPS) ## Install all
 
+.PHONY: codex codex-chime
+codex: codex-chime ## Install shared Codex instructions, skills, and local chimes
+
+codex-chime: ## Install shared Codex setup and pinned peon-ping for local chimes
+	python3 "$(MAKE_SOURCE_DIR)/scripts/setup_codex.py" --with-chime
+
 dot-files: $(HOME)/.vimrc $(HOME)/.gitconfig $(HOME)/.tmux.conf ## Set .vimrc, .gitconfig, .tmux.conf
 
 $(HOME)/.vimrc: $(MAKE_SOURCE_DIR)/dot-files/dot.vimrc

@@ -1,0 +1,14 @@
+# Shared Codex configuration template.
+# Setup copies this file only when config.toml does not already exist.
+# Only explicitly reviewed, portable settings are included.
+# Install Codex and sign in separately on each computer.
+
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+
+# Match the source computer: no approval prompts and full filesystem access.
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+
+[agents]
+max_concurrent_threads_per_session = 8
